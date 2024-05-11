@@ -28,7 +28,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "cvv",
+            "prefix": "cv",
             "style": "camelCase"
           }
         ],
@@ -36,7 +36,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "cvv",
+            "prefix": "cv",
             "style": "kebab-case"
           }
         ],
