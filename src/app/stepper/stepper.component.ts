@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NbStepChangeEvent } from '@nebular/theme';
 
 @Component({
 	selector: 'cv-stepper',
@@ -7,24 +8,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 	styleUrl: './stepper.component.scss',
 })
 export class StepperComponent implements OnInit {
-	public firstForm!: FormGroup;
+	public personalForm!: FormGroup;
 
-	public secondForm!: FormGroup;
+	public experiencesForm!: FormGroup;
 
 	public thirdForm!: FormGroup;
+
+	public changeEvent!: NbStepChangeEvent;
 
 	public constructor(private _fb: FormBuilder) {}
 
 	public ngOnInit() {
-		this.firstForm = this._fb.group({
+		this.personalForm = this._fb.group({
 			name: ['', Validators.required],
 			surname: ['', Validators.required],
+			title: ['', Validators.required],
+			address: ['', Validators.required],
 			email: ['', Validators.required],
 			phone: ['', Validators.required],
 		});
 
-		this.secondForm = this._fb.group({
-			secondCtrl: ['', Validators.required],
+		this.experiencesForm = this._fb.group({
+			experiencesArr: this._fb.array([]),
 		});
 
 		this.thirdForm = this._fb.group({
@@ -32,15 +37,50 @@ export class StepperComponent implements OnInit {
 		});
 	}
 
-	public onFirstSubmit() {
-		this.firstForm.markAsDirty();
+	get experiences() {
+		return this.experiencesForm.controls['experiencesArr'] as FormArray;
 	}
 
-	public onSecondSubmit() {
-		this.secondForm.markAsDirty();
+	public addExperience() {
+		const newExperienceForm = this._fb.group({
+			position: ['', Validators.required],
+			company: [],
+			city: [],
+			startDateMonth: [],
+			startDateYear: [],
+			endDateMonth: [],
+			endDateYear: [],
+			description: [],
+		});
+
+		this.experiences.push(newExperienceForm);
+	}
+
+	deleteExperience(experienceIndex: number) {
+		this.experiences.removeAt(experienceIndex);
+	}
+
+	public handleStepChange(e: NbStepChangeEvent): void {
+		this.changeEvent = e;
+	}
+
+	public test = ['Personal details', 'Experiences', 'Education'];
+
+	public onPersonalFormSubmit() {
+		this.personalForm.markAsDirty();
+	}
+
+	public onExperiencesFormSubmit() {
+		this.experiencesForm.markAsDirty();
 	}
 
 	public onThirdSubmit() {
 		this.thirdForm.markAsDirty();
+	}
+
+	public confirmForms() {
+		console.log(this.personalForm.value);
+		console.log(this.experiencesForm.value);
+		console.log(this.thirdForm.value);
 	}
 }

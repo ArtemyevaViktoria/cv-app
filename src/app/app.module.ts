@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
 	NbButtonModule,
 	NbCardModule,
+	NbIconModule,
 	NbInputModule,
 	NbLayoutModule,
 	NbStepperModule,
@@ -13,6 +14,7 @@ import {
 import { StepperComponent } from './stepper/stepper.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 @NgModule({
 	declarations: [AppComponent, StepperComponent],
@@ -21,12 +23,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 		BrowserAnimationsModule,
 		ReactiveFormsModule,
 		NgbModule,
+		NbEvaIconsModule,
 		NbThemeModule.forRoot({ name: 'cosmic' }),
 		NbLayoutModule,
 		NbButtonModule,
 		NbStepperModule,
 		NbCardModule,
 		NbInputModule,
+		NbIconModule,
 	],
 	bootstrap: [AppComponent],
 	exports: [],
