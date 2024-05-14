@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NbStepChangeEvent } from '@nebular/theme';
 
 @Component({
@@ -28,50 +28,23 @@ export class StepperComponent implements OnInit {
 			phone: ['', Validators.required],
 		});
 
-		this.experiencesForm = this._fb.group({
-			experiencesArr: this._fb.array([]),
-		});
-
 		this.thirdForm = this._fb.group({
 			thirdCtrl: ['', Validators.required],
 		});
 	}
 
-	get experiences() {
-		return this.experiencesForm.controls['experiencesArr'] as FormArray;
-	}
-
-	public addExperience() {
-		const newExperienceForm = this._fb.group({
-			position: ['', Validators.required],
-			company: [],
-			city: [],
-			startDateMonth: [],
-			startDateYear: [],
-			endDateMonth: [],
-			endDateYear: [],
-			description: [],
-		});
-
-		this.experiences.push(newExperienceForm);
-	}
-
-	deleteExperience(experienceIndex: number) {
-		this.experiences.removeAt(experienceIndex);
+	public experiencesFormSubmit(form: FormGroup) {
+		this.experiencesForm = form;
 	}
 
 	public handleStepChange(e: NbStepChangeEvent): void {
 		this.changeEvent = e;
 	}
 
-	public test = ['Personal details', 'Experiences', 'Education'];
+	public titles = ['Personal details', 'Experiences', 'Education'];
 
 	public onPersonalFormSubmit() {
 		this.personalForm.markAsDirty();
-	}
-
-	public onExperiencesFormSubmit() {
-		this.experiencesForm.markAsDirty();
 	}
 
 	public onThirdSubmit() {

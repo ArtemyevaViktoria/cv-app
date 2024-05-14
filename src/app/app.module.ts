@@ -15,9 +15,10 @@ import { StepperComponent } from './stepper/stepper.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { ExperiencesFormComponent } from './stepper/experiences-form/experiences-form.component';
 
 @NgModule({
-	declarations: [AppComponent, StepperComponent],
+	declarations: [AppComponent, StepperComponent, ExperiencesFormComponent],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
