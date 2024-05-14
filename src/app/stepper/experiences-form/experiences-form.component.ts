@@ -38,7 +38,7 @@ export class ExperiencesFormComponent implements OnInit {
 		this.experiences.push(newExperienceForm);
 	}
 
-	deleteExperience(experienceIndex: number) {
+	public deleteExperience(experienceIndex: number) {
 		this.experiences.removeAt(experienceIndex);
 	}
 

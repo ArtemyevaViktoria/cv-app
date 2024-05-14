@@ -49,24 +49,15 @@
         </form>
       </nb-step>
 
-
       <nb-step [stepControl]="experiencesForm" label="Experiences">
         <cv-experiences-form (form)="experiencesFormSubmit($event)"></cv-experiences-form>
       </nb-step>
 
-
-      <nb-step [stepControl]="thirdForm" label="Education">
-        <form [formGroup]="thirdForm" (ngSubmit)="onThirdSubmit()" class="step-container">
-          <div class="input-group">
-            <input nbInput type="text" placeholder="Education" class="form-control" formControlName="thirdCtrl"
-                   [ngClass]="{'form-control-danger': thirdForm.invalid && (thirdForm.dirty || thirdForm.touched)}">
-          </div>
-          <button class="mt-3" nbButton nbStepperPrevious type="button">prev</button>
-          <button class="mt-3 ms-3" nbButton nbStepperNext type="button" (click)="confirmForms()">Confirm</button>
-        </form>
+      <nb-step [stepControl]="educationForm" label="Education">
+        <cv-education-form (form)="educationFormSubmit($event)" (confirm)="confirmForms()"></cv-education-form>
       </nb-step>
 
-      <nb-step [stepControl]="thirdForm" [hidden]="true" label="Third step">
+      <nb-step [stepControl]="educationForm" [hidden]="true" label="Last step">
         <div class="step-container">
           <h3>CV completed!</h3>
           <button class="mt-3" nbButton (click)="stepper.reset()">Try again</button>

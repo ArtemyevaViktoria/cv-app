@@ -12,7 +12,7 @@ export class StepperComponent implements OnInit {
 
 	public experiencesForm!: FormGroup;
 
-	public thirdForm!: FormGroup;
+	public educationForm!: FormGroup;
 
 	public changeEvent!: NbStepChangeEvent;
 
@@ -27,14 +27,18 @@ export class StepperComponent implements OnInit {
 			email: ['', Validators.required],
 			phone: ['', Validators.required],
 		});
+	}
 
-		this.thirdForm = this._fb.group({
-			thirdCtrl: ['', Validators.required],
-		});
+	public onPersonalFormSubmit() {
+		this.personalForm.markAsDirty();
 	}
 
 	public experiencesFormSubmit(form: FormGroup) {
 		this.experiencesForm = form;
+	}
+
+	public educationFormSubmit(form: FormGroup) {
+		this.educationForm = form;
 	}
 
 	public handleStepChange(e: NbStepChangeEvent): void {
@@ -43,17 +47,9 @@ export class StepperComponent implements OnInit {
 
 	public titles = ['Personal details', 'Experiences', 'Education'];
 
-	public onPersonalFormSubmit() {
-		this.personalForm.markAsDirty();
-	}
-
-	public onThirdSubmit() {
-		this.thirdForm.markAsDirty();
-	}
-
 	public confirmForms() {
 		console.log(this.personalForm.value);
 		console.log(this.experiencesForm.value);
-		console.log(this.thirdForm.value);
+		console.log(this.educationForm.value);
 	}
 }
