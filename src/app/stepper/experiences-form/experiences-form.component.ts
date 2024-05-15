@@ -35,7 +35,7 @@ export class ExperiencesFormComponent implements OnInit {
 		this.years.reverse();
 	}
 
-	get experiences() {
+	public get experiences() {
 		return this.experiencesForm.controls['experiencesArr'] as FormArray;
 	}
 

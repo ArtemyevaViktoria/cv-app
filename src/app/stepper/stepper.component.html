@@ -1,7 +1,9 @@
 <nb-card>
   <nb-card-body>
-    <p *ngIf="!changeEvent">{{ titles[0] }}</p>
-    <p *ngIf="changeEvent">{{ titles[changeEvent.index] }}</p>
+    <div class="mb-3">
+      <p *ngIf="!changeEvent" class="fs-4">{{ titles[0] }}</p>
+      <p *ngIf="changeEvent" class="fs-4">{{ titles[changeEvent.index] }}</p>
+    </div>
 
     <nb-stepper #stepper (stepChange)="handleStepChange($event)">
 

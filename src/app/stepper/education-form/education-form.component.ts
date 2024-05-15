@@ -36,7 +36,7 @@ export class EducationFormComponent implements OnInit {
 		this.years = [...Array(35).keys()].map((i) => i + startingYear);
 	}
 
-	get education() {
+	public get education() {
 		return this.educationForm.controls['educationArr'] as FormArray;
 	}
 

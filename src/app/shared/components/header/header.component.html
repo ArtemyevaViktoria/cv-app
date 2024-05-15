@@ -1,0 +1,26 @@
+<div class="header-container">
+  <p class="fs-4 text-uppercase fw-bold">Cv maker</p>
+
+  <nb-select [selected]="selected" (selectedChange)="changeTheme($event)">
+    <nb-option value="cosmic">
+      <div class="header-grid-container">
+        <p>⭐ </p>
+        <p>cosmic</p>
+      </div>
+    </nb-option>
+
+    <nb-option value="default">
+      <div class="header-grid-container">
+        <p>⛅ </p>
+        <p>default</p>
+      </div>
+    </nb-option>
+
+    <nb-option value="dark">
+      <div class="header-grid-container">
+        <p>🌘 </p>
+        <p>dark</p>
+      </div>
+    </nb-option>
+  </nb-select>
+</div>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { NbStepChangeEvent } from '@nebular/theme';
 
 @Component({
@@ -7,7 +7,7 @@ import { NbStepChangeEvent } from '@nebular/theme';
 	templateUrl: './stepper.component.html',
 	styleUrl: './stepper.component.scss',
 })
-export class StepperComponent implements OnInit {
+export class StepperComponent {
 	public personalForm!: FormGroup;
 
 	public experiencesForm!: FormGroup;
@@ -15,23 +15,6 @@ export class StepperComponent implements OnInit {
 	public educationForm!: FormGroup;
 
 	public changeEvent!: NbStepChangeEvent;
-
-	public constructor(private _fb: FormBuilder) {}
-
-	public ngOnInit() {
-		// this.personalForm = this._fb.group({
-		// 	name: ['', Validators.required],
-		// 	surname: ['', Validators.required],
-		// 	title: ['', Validators.required],
-		// 	address: ['', Validators.required],
-		// 	email: ['', Validators.required],
-		// 	phone: ['', Validators.required],
-		// });
-	}
-
-	public onPersonalFormSubmit() {
-		this.personalForm.markAsDirty();
-	}
 
 	public personalFormSubmit(form: FormGroup) {
 		this.personalForm = form;

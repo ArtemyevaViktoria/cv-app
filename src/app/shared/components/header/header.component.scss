@@ -1,0 +1,35 @@
+:host {
+  width: 100%;
+}
+
+::ng-deep {
+  .nb-theme-cosmic nb-select .select-button,
+  .nb-theme-default nb-select .select-button,
+  .nb-theme-dark nb-select .select-button {
+    min-width: 8rem;
+  }
+}
+
+nb-option {
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-grid-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 100%;
+
+  p:first-child {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: orange;
+  }
+}

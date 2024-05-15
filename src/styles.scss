@@ -1,2 +1,14 @@
+@use 'themes' as *;
 
+// framework component styles
+@use '@nebular/theme/styles/globals' as *;
+
+// install the framework styles
+@include nb-install() {
+  @include nb-theme-global();
+}
+
+p {
+  margin: 0;
+}
 
