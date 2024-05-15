@@ -15,30 +15,43 @@
 
       <label for="startDateMonth" class="mb-1 ms-1 mt-3">Start Date</label>
       <div class="d-flex">
-        <input id="startDateMonth" class="form-control" nbInput type="text"
-               formControlName="startDateMonth"
-               [ngClass]="{'form-control-danger': edcForm.invalid && (edcForm.dirty || edcForm.touched)}">
-        <input id="startDateYear" class="form-control" nbInput type="text"
-               formControlName="startDateYear"
-               [ngClass]="{'form-control-danger': edcForm.invalid && (edcForm.dirty || edcForm.touched)}">
+
+        <nb-select id="startDateMonth" formControlName="startDateMonth">
+          <nb-option *ngFor="let month of months" [value]="month">
+            {{ month }}
+          </nb-option>
+        </nb-select>
+
+        <nb-select id="startDateYear" formControlName="startDateYear">
+          <nb-option *ngFor="let year of years" [value]="year">
+            {{ year }}
+          </nb-option>
+        </nb-select>
       </div>
 
 
       <label for="endDateMonth" class="mb-1 ms-1 mt-3">End Date</label>
       <div class="d-flex">
-        <input id="endDateMonth" class="form-control" nbInput type="text"
-               formControlName="endDateMonth"
-               [ngClass]="{'form-control-danger': edcForm.invalid && (edcForm.dirty || edcForm.touched)}">
-        <input id="endDateYear" class="form-control" nbInput type="text"
-               formControlName="endDateYear"
-               [ngClass]="{'form-control-danger': edcForm.invalid && (edcForm.dirty || edcForm.touched)}">
+
+        <nb-select id="endDateMonth" formControlName="endDateMonth">
+          <nb-option *ngFor="let month of months" [value]="month">
+            {{ month }}
+          </nb-option>
+        </nb-select>
+
+        <nb-select id="endDateYear" formControlName="endDateYear">
+          <nb-option *ngFor="let year of years" [value]="year">
+            {{ year }}
+          </nb-option>
+        </nb-select>
       </div>
 
 
       <label for="description" class="mb-1 ms-1 mt-3">Description</label>
-      <input id="description" class="form-control" nbInput type="text" placeholder="description"
-             formControlName="description"
-             [ngClass]="{'form-control-danger': edcForm.invalid && (edcForm.dirty || edcForm.touched)}">
+      <textarea id="description" nbInput fullWidth type="text" placeholder="description" class="form-control"
+                formControlName="description"
+                [ngClass]="{'form-control-danger': edcForm.invalid && (edcForm.dirty || edcForm.touched)}">
+      </textarea>
     </div>
 
     <button nbButton (click)="deleteEducation(i)" class="mt-3 mb-3">
@@ -52,5 +65,6 @@
   <br>
 
   <button class="mt-3" nbButton nbStepperPrevious type="button">prev</button>
-  <button class="mt-3 ms-3" nbButton nbStepperNext type="button" (click)="confirm.emit()">Confirm</button>
+  <button class="mt-3 ms-3" nbButton nbStepperNext type="button" (click)="confirm.emit()"
+          [disabled]="!educationForm.valid">Confirm</button>
 </form>

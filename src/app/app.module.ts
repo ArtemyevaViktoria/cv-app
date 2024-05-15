@@ -5,9 +5,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
 	NbButtonModule,
 	NbCardModule,
+	NbFormFieldModule,
 	NbIconModule,
 	NbInputModule,
 	NbLayoutModule,
+	NbSelectModule,
 	NbStepperModule,
 	NbThemeModule,
 } from '@nebular/theme';
@@ -17,12 +19,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ExperiencesFormComponent } from './stepper/experiences-form/experiences-form.component';
 import { EducationFormComponent } from './stepper/education-form/education-form.component';
+import { PersonalFormComponent } from './stepper/personal-form/personal-form.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-	declarations: [AppComponent, StepperComponent, ExperiencesFormComponent, EducationFormComponent],
+	declarations: [
+		AppComponent,
+		StepperComponent,
+		ExperiencesFormComponent,
+		EducationFormComponent,
+		PersonalFormComponent,
+	],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
+		SharedModule.forRoot(),
 		ReactiveFormsModule,
 		NgbModule,
 		NbEvaIconsModule,
@@ -33,6 +44,8 @@ import { EducationFormComponent } from './stepper/education-form/education-form.
 		NbCardModule,
 		NbInputModule,
 		NbIconModule,
+		NbFormFieldModule,
+		NbSelectModule,
 	],
 	bootstrap: [AppComponent],
 	exports: [],

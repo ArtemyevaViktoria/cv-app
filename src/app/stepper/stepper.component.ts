@@ -19,18 +19,22 @@ export class StepperComponent implements OnInit {
 	public constructor(private _fb: FormBuilder) {}
 
 	public ngOnInit() {
-		this.personalForm = this._fb.group({
-			name: ['', Validators.required],
-			surname: ['', Validators.required],
-			title: ['', Validators.required],
-			address: ['', Validators.required],
-			email: ['', Validators.required],
-			phone: ['', Validators.required],
-		});
+		// this.personalForm = this._fb.group({
+		// 	name: ['', Validators.required],
+		// 	surname: ['', Validators.required],
+		// 	title: ['', Validators.required],
+		// 	address: ['', Validators.required],
+		// 	email: ['', Validators.required],
+		// 	phone: ['', Validators.required],
+		// });
 	}
 
 	public onPersonalFormSubmit() {
 		this.personalForm.markAsDirty();
+	}
+
+	public personalFormSubmit(form: FormGroup) {
+		this.personalForm = form;
 	}
 
 	public experiencesFormSubmit(form: FormGroup) {
@@ -49,7 +53,12 @@ export class StepperComponent implements OnInit {
 
 	public confirmForms() {
 		console.log(this.personalForm.value);
-		console.log(this.experiencesForm.value);
-		console.log(this.educationForm.value);
+
+		if (this.experiencesForm?.value) {
+			console.log(this.experiencesForm.value);
+		}
+		if (this.educationForm?.value) {
+			console.log(this.educationForm.value);
+		}
 	}
 }

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CMonths } from '../../shared/constants/months';
 
 @Component({
 	selector: 'cv-education-form',
@@ -13,12 +14,26 @@ export class EducationFormComponent implements OnInit {
 
 	public educationForm!: FormGroup;
 
+	public months: string[] = CMonths;
+
+	public years!: number[];
+
+	public currentYear: number = new Date().getFullYear();
+
 	public constructor(private _fb: FormBuilder) {}
 
 	public ngOnInit() {
 		this.educationForm = this._fb.group({
 			educationArr: this._fb.array([]),
 		});
+
+		this.getYears();
+	}
+
+	public getYears() {
+		const startingYear = this.currentYear - 34;
+
+		this.years = [...Array(35).keys()].map((i) => i + startingYear);
 	}
 
 	get education() {
@@ -29,10 +44,10 @@ export class EducationFormComponent implements OnInit {
 		const newEducationForm = this._fb.group({
 			universityName: ['', Validators.required],
 			city: ['', Validators.required],
-			startDateMonth: ['', Validators.required],
-			startDateYear: ['', Validators.required],
-			endDateMonth: ['', Validators.required],
-			endDateYear: ['', Validators.required],
+			startDateMonth: [this.months[0], Validators.required],
+			startDateYear: [2023, Validators.required],
+			endDateMonth: [this.months[3], Validators.required],
+			endDateYear: [2024, Validators.required],
 			description: [],
 		});
 
