@@ -1,0 +1,8 @@
+.step-btn-container {
+  display: flex;
+  justify-content: center;
+
+  button {
+    width: calc(50% - 0.5rem);
+  }
+}

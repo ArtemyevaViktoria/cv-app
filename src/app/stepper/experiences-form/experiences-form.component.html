@@ -2,55 +2,60 @@
   <div formArrayName="experiencesArr" *ngFor="let expForm of experiences.controls; let i = index" class="mt-3">
     <div [formGroupName]="i">
       <label for="position" class="mb-1 ms-1">Position</label>
-      <input id="position" class="form-control" nbInput type="text" placeholder="your position"
+      <input id="position" class="form-control" nbInput fullWidth type="text" placeholder="your position"
              formControlName="position"
              [ngClass]="{'form-control-danger': expForm.invalid && (expForm.dirty || expForm.touched)}">
 
 
       <label for="company" class="mb-1 ms-1 mt-3">Company</label>
-      <input id="company" class="form-control" nbInput type="text" placeholder="company"
+      <input id="company" class="form-control" nbInput fullWidth type="text" placeholder="company"
              formControlName="company"
              [ngClass]="{'form-control-danger': expForm.invalid && (expForm.dirty || expForm.touched)}">
 
 
       <label for="city" class="mb-1 ms-1 mt-3">City</label>
-      <input id="city" class="form-control" nbInput type="text" placeholder="e.g. Moscow"
+      <input id="city" class="form-control" nbInput fullWidth type="text" placeholder="e.g. Moscow"
              formControlName="city"
              [ngClass]="{'form-control-danger': expForm.invalid && (expForm.dirty || expForm.touched)}">
 
 
-      <label for="startDateMonth" class="mb-1 ms-1 mt-3">Start Date</label>
-      <div class="d-flex">
+      <div class="date-select-wrapper">
 
-        <nb-select id="startDateMonth" formControlName="startDateMonth">
-          <nb-option *ngFor="let month of months" [value]="month">
-            {{ month }}
-          </nb-option>
-        </nb-select>
+        <div class="date-select-container">
+          <label for="startDateMonth" class="mb-1 ms-1 mt-3">Start Date</label>
+          <div class="date-select-flex">
 
-        <nb-select id="startDateYear" formControlName="startDateYear">
-          <nb-option *ngFor="let year of years" [value]="year">
-            {{ year }}
-          </nb-option>
-        </nb-select>
+            <nb-select id="startDateMonth" formControlName="startDateMonth">
+              <nb-option *ngFor="let month of months" [value]="month">
+                {{ month }}
+              </nb-option>
+            </nb-select>
 
-      </div>
+            <nb-select id="startDateYear" formControlName="startDateYear">
+              <nb-option *ngFor="let year of years" [value]="year">
+                {{ year }}
+              </nb-option>
+            </nb-select>
+          </div>
+        </div>
 
+        <div class="date-select-container">
+          <label for="endDateMonth" class="mb-1 ms-1 mt-3">End Date</label>
+          <div class="date-select-flex">
 
-      <label for="endDateMonth" class="mb-1 ms-1 mt-3">End Date</label>
-      <div class="d-flex">
+            <nb-select id="endDateMonth" formControlName="endDateMonth">
+              <nb-option *ngFor="let month of months" [value]="month">
+                {{ month }}
+              </nb-option>
+            </nb-select>
 
-        <nb-select id="endDateMonth" formControlName="endDateMonth">
-          <nb-option *ngFor="let month of months" [value]="month">
-            {{ month }}
-          </nb-option>
-        </nb-select>
-
-        <nb-select id="endDateYear" formControlName="endDateYear">
-          <nb-option *ngFor="let year of years" [value]="year">
-            {{ year }}
-          </nb-option>
-        </nb-select>
+            <nb-select id="endDateYear" formControlName="endDateYear">
+              <nb-option *ngFor="let year of years" [value]="year">
+                {{ year }}
+              </nb-option>
+            </nb-select>
+          </div>
+        </div>
       </div>
 
 
@@ -61,16 +66,18 @@
       </textarea>
     </div>
 
-    <button nbButton (click)="deleteExperience(i)" class="mt-3 mb-3">
+    <button nbButton (click)="deleteExperience(i)" class="mt-3 mb-3 control-btn">
       <nb-icon icon="trash-2-outline"></nb-icon> Delete experience
     </button>
   </div>
 
-  <button nbButton (click)="addExperience()" class="mt-3">
+  <button nbButton (click)="addExperience()" class="mt-3 control-btn">
     <nb-icon icon="plus-circle-outline"></nb-icon> Add experience
   </button>
-  <br>
 
-  <button class="mt-3" nbButton nbStepperPrevious type="button">prev</button>
-  <button class="mt-3 ms-3" nbButton nbStepperNext type="button" [disabled]="!experiencesForm.valid">next</button>
+  <div class="step-btn-container">
+    <button class="mt-3" nbButton nbStepperPrevious type="button">prev</button>
+    <button class="mt-3" nbButton nbStepperNext type="button" [disabled]="!experiencesForm.valid">next</button>
+  </div>
+
 </form>

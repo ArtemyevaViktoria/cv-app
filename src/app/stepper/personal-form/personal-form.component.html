@@ -1,25 +1,25 @@
 <form [formGroup]="personalForm" class="step-container">
   <div>
     <label for="firstName" class="mb-1 ms-1">First name</label>
-    <input id="firstName" class="form-control" nbInput type="text" placeholder="Ivan"
+    <input id="firstName" class="form-control" nbInput fullWidth type="text" placeholder="Ivan"
            formControlName="firstName"
            [ngClass]="{'form-control-danger': personalForm.invalid && (personalForm.dirty
                    || personalForm.touched)}">
 
     <label for="lastName" class="mb-1 ms-1 mt-3">Last name</label>
-    <input id="lastName" class="form-control" nbInput type="text" placeholder="Ivanov"
+    <input id="lastName" class="form-control" nbInput fullWidth type="text" placeholder="Ivanov"
            formControlName="lastName"
            [ngClass]="{'form-control-danger': personalForm.invalid && (personalForm.dirty
                    || personalForm.touched)}">
 
     <label for="title" class="mb-1 ms-1 mt-3">Title</label>
-    <input id="title" class="form-control" nbInput type="text" placeholder="Frontend Developer"
+    <input id="title" class="form-control" nbInput fullWidth type="text" placeholder="Frontend Developer"
            formControlName="title"
            [ngClass]="{'form-control-danger': personalForm.invalid && (personalForm.dirty
                    || personalForm.touched)}">
 
     <label for="address" class="mb-1 ms-1 mt-3">Address</label>
-    <input id="address" class="form-control" nbInput type="text" placeholder="125009, Red Square, Moscow, RU"
+    <input id="address" class="form-control" nbInput fullWidth type="text" placeholder="125009, Red Square, Moscow, RU"
            formControlName="address"
            [ngClass]="{'form-control-danger': personalForm.invalid && (personalForm.dirty
                    || personalForm.touched)}">
@@ -29,18 +29,20 @@
     <nb-form-field>
       <nb-icon nbPrefix icon="at-outline" pack="eva"></nb-icon>
 
-      <input id="email" class="form-control" nbInput type="email" placeholder="ivan.front.dev@gmail.com"
+      <input id="email" class="form-control" nbInput fullWidth type="email" placeholder="ivan.front.dev@gmail.com"
              formControlName="email"
              [ngClass]="{'form-control-danger': personalForm.invalid && (personalForm.dirty || personalForm.touched)}">
     </nb-form-field>
 
     <label for="phone" class="mb-1 ms-1 mt-3">Phone number</label>
-    <input id="phone" class="form-control" nbInput type="tel" placeholder="+7 (495) 830-29-50"
+    <input id="phone" class="form-control" nbInput fullWidth type="tel" placeholder="+7 (495) 830-29-50"
            formControlName="phone"
            [ngClass]="{'form-control-danger': personalForm.invalid && (personalForm.dirty
                    || personalForm.touched)}">
   </div>
 
-  <button class="mt-3" nbButton nbStepperNext type="button" (click)="submitForm()"
-          [disabled]="!personalForm.valid">next</button>
+  <div class="step-btn-container">
+    <button class="mt-3 step-btn" nbButton nbStepperNext type="button" (click)="submitForm()"
+            [disabled]="!personalForm.valid">next</button>
+  </div>
 </form>

@@ -10,13 +10,13 @@
   }
 }
 
-nb-option {
-  align-items: center;
-}
-
 .header-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+nb-option {
   align-items: center;
 }
 
@@ -33,3 +33,4 @@ nb-option {
     color: orange;
   }
 }
+

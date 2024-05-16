@@ -1,1 +1,7 @@
-
+::ng-deep {
+  .nb-theme-cosmic nb-layout .layout .layout-container .content .columns nb-layout-column,
+  .nb-theme-default nb-layout .layout .layout-container .content .columns nb-layout-column,
+  .nb-theme-dark nb-layout .layout .layout-container .content .columns nb-layout-column {
+    padding: 1rem;
+  }
+}

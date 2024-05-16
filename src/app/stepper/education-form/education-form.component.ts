@@ -44,6 +44,8 @@ export class EducationFormComponent implements OnInit {
 		const newEducationForm = this._fb.group({
 			universityName: ['', Validators.required],
 			city: ['', Validators.required],
+			degree: ['', Validators.required],
+			subject: ['', Validators.required],
 			startDateMonth: [this.months[0], Validators.required],
 			startDateYear: [2023, Validators.required],
 			endDateMonth: [this.months[3], Validators.required],

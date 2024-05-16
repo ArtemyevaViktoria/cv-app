@@ -1,0 +1,63 @@
+::ng-deep {
+  .nb-theme-cosmic nb-stepper .step-content,
+  .nb-theme-default nb-stepper .step-content,
+  .nb-theme-dark nb-stepper .step-content {
+    padding: 0;
+  }
+
+  nb-stepper .step-content {
+    padding: 0;
+  }
+}
+
+.date-select-flex {
+  display: flex;
+  flex-direction: column;
+
+  nb-select:last-child {
+    margin-top: 0.3rem;
+  }
+}
+
+.control-btn {
+  width: 100%;
+}
+
+.step-btn-container {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    width: calc(50% - 0.5rem);
+  }
+}
+
+@media (min-width: 380px) {
+  .date-select-flex {
+    flex-direction: row;
+    justify-content: space-between;
+
+    nb-select:last-child {
+      margin-top: 0;
+    }
+
+    nb-select {
+      width: calc(50% - 0.5rem);
+    }
+  }
+}
+
+@media (min-width: 650px) {
+  .date-select-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .date-select-container {
+    width: calc(50% - 0.5rem);
+  }
+
+  .date-select-flex {
+    width: 100%;
+  }
+}

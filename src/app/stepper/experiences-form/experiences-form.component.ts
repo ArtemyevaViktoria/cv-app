@@ -32,7 +32,6 @@ export class ExperiencesFormComponent implements OnInit {
 		const startingYear = this.currentYear - 24;
 
 		this.years = [...Array(25).keys()].map((i) => i + startingYear);
-		this.years.reverse();
 	}
 
 	public get experiences() {

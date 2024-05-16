@@ -1,2 +1,12 @@
+::ng-deep {
+  .header {
+    margin-top: 1.5rem;
+  }
+}
 
+nb-card {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
 
