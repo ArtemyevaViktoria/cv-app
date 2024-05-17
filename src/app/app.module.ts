@@ -22,11 +22,11 @@ import { EducationsFormComponent } from './component/stepper/educations-form/edu
 import { PersonalFormComponent } from './component/stepper/personal-form/personal-form.component';
 import { SharedModule } from './shared/shared.module';
 import { CvResultComponent } from './component/cv-result/cv-result.component';
-import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { cvDataReducer } from './shared/store/cv-data/cv-data.reducer';
 import { CvDataEffects } from './shared/store/cv-data/cv-data.effects';
+import { StoreModule } from '@ngrx/store';
+import { cvDataReducer } from './shared/store/cv-data/cv-data.reducer';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -41,7 +41,7 @@ import { CvDataEffects } from './shared/store/cv-data/cv-data.effects';
 		BrowserAnimationsModule,
 		ReactiveFormsModule,
 		SharedModule.forRoot(),
-		StoreModule.forRoot({ cvData: cvDataReducer }, {}),
+		StoreModule.forRoot({ cvData: cvDataReducer }),
 		EffectsModule.forRoot([CvDataEffects]),
 		StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
 		NbThemeModule.forRoot({ name: 'cosmic' }),

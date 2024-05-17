@@ -61,7 +61,7 @@ export class ExperiencesFormComponent implements OnInit {
 		this.experiences.removeAt(experienceIndex);
 	}
 
-	public onExperiencesFormSubmit() {
+	public submitForm() {
 		this.experiencesForm.markAsDirty();
 
 		this.form.emit(this.experiencesForm);

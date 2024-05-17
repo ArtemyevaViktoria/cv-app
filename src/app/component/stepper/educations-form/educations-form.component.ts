@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CMonths } from '../../../shared/constants/months';
+import { StoreDispatchFacade } from '../../../shared/facades/store-dispatch.facade';
 
 @Component({
 	selector: 'cv-educations-form',
@@ -20,7 +21,10 @@ export class EducationsFormComponent implements OnInit {
 
 	public currentYear: number = new Date().getFullYear();
 
-	public constructor(private _fb: FormBuilder) {}
+	public constructor(
+		private _fb: FormBuilder,
+		private _storeDispatch: StoreDispatchFacade,
+	) {}
 
 	public ngOnInit() {
 		this.educationsForm = this._fb.group({
@@ -60,7 +64,7 @@ export class EducationsFormComponent implements OnInit {
 		this.education.removeAt(educationIndex);
 	}
 
-	public onEducationFormSubmit() {
+	public submitForm() {
 		this.educationsForm.markAsDirty();
 
 		this.form.emit(this.educationsForm);

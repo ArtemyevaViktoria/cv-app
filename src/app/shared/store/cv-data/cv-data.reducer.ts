@@ -4,6 +4,16 @@ import { ICvDataState, initialCvDataState } from './cv-data.state';
 
 export const cvDataReducer = createReducer(
 	initialCvDataState,
+
+	on(CvDataActions.getPersonalDataSuccess, (state: ICvDataState, { payload }) => ({
+		...state,
+		personalData: payload,
+	})),
+	on(CvDataActions.getExperiencesSuccess, (state: ICvDataState, { payload }) => ({
+		...state,
+		experiences: payload,
+	})),
+
 	on(CvDataActions.addPersonalDataToLocalStorage, (state: ICvDataState, { payload }) => ({
 		...state,
 		personalData: payload,
@@ -11,9 +21,5 @@ export const cvDataReducer = createReducer(
 	on(CvDataActions.addExperiencesToLocalStorage, (state: ICvDataState, { payload }) => ({
 		...state,
 		experiences: payload,
-	})),
-	on(CvDataActions.addEducationsToLocalStorage, (state: ICvDataState, { payload }) => ({
-		...state,
-		educations: payload,
 	})),
 );
