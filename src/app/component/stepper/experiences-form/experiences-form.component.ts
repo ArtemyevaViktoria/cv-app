@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CMonths } from '../../shared/constants/months';
+import { CMonths } from '../../../shared/constants/months';
+import { StoreDispatchFacade } from '../../../shared/facades/store-dispatch.facade';
 
 @Component({
 	selector: 'cv-experiences-form',
@@ -18,7 +19,10 @@ export class ExperiencesFormComponent implements OnInit {
 
 	public currentYear: number = new Date().getFullYear();
 
-	public constructor(private _fb: FormBuilder) {}
+	public constructor(
+		private _fb: FormBuilder,
+		private _storeDispatch: StoreDispatchFacade,
+	) {}
 
 	public ngOnInit() {
 		this.experiencesForm = this._fb.group({
@@ -61,5 +65,7 @@ export class ExperiencesFormComponent implements OnInit {
 		this.experiencesForm.markAsDirty();
 
 		this.form.emit(this.experiencesForm);
+
+		this._storeDispatch.addExperiencesToLocalStorage(this.experiencesForm.value);
 	}
 }

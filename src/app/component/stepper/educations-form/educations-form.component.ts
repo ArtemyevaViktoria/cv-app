@@ -1,18 +1,18 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CMonths } from '../../shared/constants/months';
+import { CMonths } from '../../../shared/constants/months';
 
 @Component({
-	selector: 'cv-education-form',
-	templateUrl: './education-form.component.html',
-	styleUrl: './education-form.component.scss',
+	selector: 'cv-educations-form',
+	templateUrl: './educations-form.component.html',
+	styleUrl: './educations-form.component.scss',
 })
-export class EducationFormComponent implements OnInit {
+export class EducationsFormComponent implements OnInit {
 	@Output() public form = new EventEmitter();
 
 	@Output() public confirm = new EventEmitter();
 
-	public educationForm!: FormGroup;
+	public educationsForm!: FormGroup;
 
 	public months: string[] = CMonths;
 
@@ -23,7 +23,7 @@ export class EducationFormComponent implements OnInit {
 	public constructor(private _fb: FormBuilder) {}
 
 	public ngOnInit() {
-		this.educationForm = this._fb.group({
+		this.educationsForm = this._fb.group({
 			educationArr: this._fb.array([]),
 		});
 
@@ -37,7 +37,7 @@ export class EducationFormComponent implements OnInit {
 	}
 
 	public get education() {
-		return this.educationForm.controls['educationArr'] as FormArray;
+		return this.educationsForm.controls['educationArr'] as FormArray;
 	}
 
 	public addEducation() {
@@ -46,10 +46,10 @@ export class EducationFormComponent implements OnInit {
 			city: ['', Validators.required],
 			degree: ['', Validators.required],
 			subject: ['', Validators.required],
-			startDateMonth: [this.months[0], Validators.required],
-			startDateYear: [2023, Validators.required],
-			endDateMonth: [this.months[3], Validators.required],
-			endDateYear: [2024, Validators.required],
+			startDateMonth: [this.months[8], Validators.required],
+			startDateYear: [2016, Validators.required],
+			endDateMonth: [this.months[5], Validators.required],
+			endDateYear: [2020, Validators.required],
 			description: [],
 		});
 
@@ -61,8 +61,8 @@ export class EducationFormComponent implements OnInit {
 	}
 
 	public onEducationFormSubmit() {
-		this.educationForm.markAsDirty();
+		this.educationsForm.markAsDirty();
 
-		this.form.emit(this.educationForm);
+		this.form.emit(this.educationsForm);
 	}
 }

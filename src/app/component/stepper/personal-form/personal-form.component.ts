@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StoreDispatchFacade } from '../../../shared/facades/store-dispatch.facade';
 
 @Component({
 	selector: 'cv-personal-form',
@@ -11,7 +12,10 @@ export class PersonalFormComponent implements OnInit {
 
 	public personalForm!: FormGroup;
 
-	public constructor(private _fb: FormBuilder) {}
+	public constructor(
+		private _fb: FormBuilder,
+		private _storeDispatch: StoreDispatchFacade,
+	) {}
 
 	public ngOnInit() {
 		this.personalForm = this._fb.group({
@@ -28,5 +32,7 @@ export class PersonalFormComponent implements OnInit {
 		this.personalForm.markAsDirty();
 
 		this.form.emit(this.personalForm);
+
+		this._storeDispatch.addPersonalDataToLocalStorage(this.personalForm.value);
 	}
 }

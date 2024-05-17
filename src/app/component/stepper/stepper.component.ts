@@ -12,7 +12,7 @@ export class StepperComponent {
 
 	public experiencesForm!: FormGroup;
 
-	public educationForm!: FormGroup;
+	public educationsForm!: FormGroup;
 
 	public changeEvent!: NbStepChangeEvent;
 
@@ -24,8 +24,8 @@ export class StepperComponent {
 		this.experiencesForm = form;
 	}
 
-	public educationFormSubmit(form: FormGroup) {
-		this.educationForm = form;
+	public educationsFormSubmit(form: FormGroup) {
+		this.educationsForm = form;
 	}
 
 	public handleStepChange(e: NbStepChangeEvent): void {
@@ -40,8 +40,8 @@ export class StepperComponent {
 		if (this.experiencesForm?.value) {
 			console.log(this.experiencesForm.value);
 		}
-		if (this.educationForm?.value) {
-			console.log(this.educationForm.value);
+		if (this.educationsForm?.value) {
+			console.log(this.educationsForm.value);
 		}
 	}
 }
