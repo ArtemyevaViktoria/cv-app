@@ -4,6 +4,7 @@ import { StoreDispatchFacade } from '../../../shared/facades/store-dispatch.faca
 import { StoreSelectFacade } from '../../../shared/facades/store-select.facade';
 import { UnSubscriber } from '../../../shared/utils/unsubscriber';
 import { IPersonalData } from '../../../shared/models/personal-data.model';
+import { takeUntil } from 'rxjs';
 
 @Component({
 	selector: 'cv-personal-form',
@@ -26,12 +27,12 @@ export class PersonalFormComponent extends UnSubscriber implements OnInit {
 	}
 
 	public ngOnInit() {
-		// this._storeSelect
-		// 	.personalData()
-		// 	.pipe(takeUntil(this.unsubscribe$$))
-		// 	.subscribe((vl) => (this.personalData = vl));
-
 		this.initPersonalForm();
+
+		this._storeSelect
+			.personalData()
+			.pipe(takeUntil(this.unsubscribe$$))
+			.subscribe((vl) => this.setPersonalData(vl));
 	}
 
 	public initPersonalForm() {
@@ -42,6 +43,17 @@ export class PersonalFormComponent extends UnSubscriber implements OnInit {
 			address: ['', Validators.required],
 			email: ['', Validators.required],
 			phone: ['', Validators.required],
+		});
+	}
+
+	public setPersonalData(personalData: IPersonalData) {
+		this.personalForm.setValue({
+			firstName: personalData.firstName,
+			lastName: personalData.lastName,
+			title: personalData.title,
+			address: personalData.address,
+			email: personalData.email,
+			phone: personalData.phone,
 		});
 	}
 

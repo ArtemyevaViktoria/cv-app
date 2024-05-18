@@ -5,7 +5,7 @@
       <p *ngIf="changeEvent" class="fs-4">{{ titles[changeEvent.index] }}</p>
     </div>
 
-    <nb-stepper #stepper (stepChange)="handleStepChange($event)">
+    <nb-stepper #stepper (stepChange)="handleStepChange($event)" disableStepNavigation>
 
       <nb-step [stepControl]="personalForm" label="Personal">
         <cv-personal-form (form)="personalFormSubmit($event)"></cv-personal-form>

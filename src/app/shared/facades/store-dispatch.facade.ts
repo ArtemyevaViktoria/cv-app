@@ -4,12 +4,13 @@ import { CvDataActions } from '../store/cv-data';
 import { IPersonalData } from '../models/personal-data.model';
 import { IExperience } from '../models/experience.model';
 import { IEducation } from '../models/education.model';
+import { IRootState } from '../store/root.state';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class StoreDispatchFacade {
-	public constructor(private store: Store) {}
+	public constructor(private store: Store<IRootState>) {}
 
 	public getPersonalDataFromLocalStorage(): void {
 		return this.store.dispatch(

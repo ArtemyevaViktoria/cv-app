@@ -7,7 +7,13 @@ export const selectPersonalData = createSelector(
 	cvDataState,
 	(state: ICvDataState) => state.personalData,
 );
+
 export const selectExperiences = createSelector(
 	cvDataState,
 	(state: ICvDataState) => state.experiences,
+);
+
+export const selectEducations = createSelector(
+	cvDataState,
+	(state: ICvDataState) => state.educations,
 );
