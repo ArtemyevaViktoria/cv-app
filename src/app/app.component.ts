@@ -14,5 +14,6 @@ export class AppComponent implements OnInit {
 	public ngOnInit() {
 		this._storeDispatch.getPersonalDataFromLocalStorage();
 		this._storeDispatch.getExperiencesFromLocalStorage();
+		this._storeDispatch.getEducationsFromLocalStorage();
 	}
 }

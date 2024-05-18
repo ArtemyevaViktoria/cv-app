@@ -66,6 +66,8 @@ export class ExperiencesFormComponent implements OnInit {
 
 		this.form.emit(this.experiencesForm);
 
-		this._storeDispatch.addExperiencesToLocalStorage(this.experiencesForm.value);
+		if (this.experiencesForm.controls['experiencesArr'].value.length > 0) {
+			this._storeDispatch.addExperiencesToLocalStorage(this.experiencesForm.value);
+		}
 	}
 }

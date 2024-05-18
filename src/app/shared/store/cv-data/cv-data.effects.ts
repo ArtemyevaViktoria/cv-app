@@ -6,6 +6,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { CvDataActions } from './index';
 import { IPersonalData } from '../../models/personal-data.model';
 import { IExperience } from '../../models/experience.model';
+import { IEducation } from '../../models/education.model';
 
 @Injectable()
 export class CvDataEffects {
@@ -40,6 +41,19 @@ export class CvDataEffects {
 		);
 	});
 
+	public getEducationsFromLocalStorage$: Observable<Action> = createEffect(() => {
+		return this.actions.pipe(
+			ofType(CvDataActions.getEducationsFromLocalStorage),
+			filter((action) => this._localStorageService.getItem<IEducation[]>(action.key) !== null),
+			map((action): Action => {
+				const localStoragePersonalData = this._localStorageService.getItem<IEducation[]>(
+					action.key,
+				);
+				return CvDataActions.getEducationsSuccess({ payload: localStoragePersonalData });
+			}),
+		);
+	});
+
 	public addPersonalDataToLocalStorage$: Observable<Action> = createEffect(
 		() => {
 			return this.actions.pipe(
@@ -58,6 +72,18 @@ export class CvDataEffects {
 				ofType(CvDataActions.addExperiencesToLocalStorage),
 				tap((action) => {
 					return this._localStorageService.setItem('experiences', action.payload);
+				}),
+			);
+		},
+		{ dispatch: false },
+	);
+
+	public addEducationsToLocalStorage$: Observable<Action> = createEffect(
+		() => {
+			return this.actions.pipe(
+				ofType(CvDataActions.addEducationsToLocalStorage),
+				tap((action) => {
+					return this._localStorageService.setItem('educations', action.payload);
 				}),
 			);
 		},

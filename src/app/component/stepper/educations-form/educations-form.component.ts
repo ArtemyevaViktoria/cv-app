@@ -68,5 +68,9 @@ export class EducationsFormComponent implements OnInit {
 		this.educationsForm.markAsDirty();
 
 		this.form.emit(this.educationsForm);
+
+		if (this.educationsForm.controls['educationArr'].value.length > 0) {
+			this._storeDispatch.addEducationsToLocalStorage(this.educationsForm.value);
+		}
 	}
 }
