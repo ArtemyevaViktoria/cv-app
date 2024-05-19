@@ -1,5 +1,5 @@
 import { IExperience } from './experience.model';
 
-export interface ILocalStorageExperiencesModel {
+export interface ILocalStorageExperiences {
 	experiencesArr: IExperience[];
 }

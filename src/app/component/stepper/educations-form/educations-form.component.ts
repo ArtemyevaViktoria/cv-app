@@ -2,13 +2,17 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CMonths } from '../../../shared/constants/months';
 import { StoreDispatchFacade } from '../../../shared/facades/store-dispatch.facade';
+import { UnSubscriber } from '../../../shared/utils/unsubscriber';
+import { StoreSelectFacade } from '../../../shared/facades/store-select.facade';
+import { takeUntil } from 'rxjs';
+import { IEducation } from '../../../shared/models/education.model';
 
 @Component({
 	selector: 'cv-educations-form',
 	templateUrl: './educations-form.component.html',
 	styleUrl: './educations-form.component.scss',
 })
-export class EducationsFormComponent implements OnInit {
+export class EducationsFormComponent extends UnSubscriber implements OnInit {
 	@Output() public form = new EventEmitter();
 
 	@Output() public confirm = new EventEmitter();
@@ -24,7 +28,10 @@ export class EducationsFormComponent implements OnInit {
 	public constructor(
 		private _fb: FormBuilder,
 		private _storeDispatch: StoreDispatchFacade,
-	) {}
+		private _storeSelect: StoreSelectFacade,
+	) {
+		super();
+	}
 
 	public ngOnInit() {
 		this.educationsForm = this._fb.group({
@@ -32,6 +39,13 @@ export class EducationsFormComponent implements OnInit {
 		});
 
 		this.getYears();
+
+		this._storeSelect
+			.educations()
+			.pipe(takeUntil(this.unsubscribe$$))
+			.subscribe((vl) => {
+				this.createEducations(vl);
+			});
 	}
 
 	public getYears() {
@@ -42,6 +56,36 @@ export class EducationsFormComponent implements OnInit {
 
 	public get education() {
 		return this.educationsForm.controls['educationArr'] as FormArray;
+	}
+
+	public createEducations(educations: IEducation[]) {
+		for (let i = 0; i < educations.length; i++) {
+			this.addEducation();
+		}
+
+		this.setEducationData(educations);
+	}
+
+	public setEducationData(educations: IEducation[]) {
+		const educationsFromLocalStorage: IEducation[] = [];
+
+		for (let i = 0; i < educations.length; i++) {
+			const newEducation: IEducation = {
+				universityName: educations[i].universityName,
+				city: educations[i].city,
+				degree: educations[i].degree,
+				subject: educations[i].subject,
+				startDateMonth: educations[i].startDateMonth,
+				startDateYear: educations[i].startDateYear,
+				endDateMonth: educations[i].endDateMonth,
+				endDateYear: educations[i].endDateYear,
+				description: educations[i].description ?? '',
+			};
+
+			educationsFromLocalStorage.push(newEducation);
+		}
+
+		this.educationsForm.controls['educationArr'].setValue(educationsFromLocalStorage);
 	}
 
 	public addEducation() {

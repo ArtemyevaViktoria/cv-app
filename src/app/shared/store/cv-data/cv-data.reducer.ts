@@ -15,7 +15,7 @@ export const cvDataReducer = createReducer(
 	})),
 	on(CvDataActions.getEducationsSuccess, (state: ICvDataState, { payload }) => ({
 		...state,
-		educations: payload,
+		educations: payload.educationArr,
 	})),
 
 	on(CvDataActions.addPersonalDataToLocalStorage, (state: ICvDataState, { payload }) => ({

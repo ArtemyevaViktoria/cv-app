@@ -5,9 +5,8 @@ import { filter, map, Observable, tap } from 'rxjs';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { CvDataActions } from './index';
 import { IPersonalData } from '../../models/personal-data.model';
-import { IExperience } from '../../models/experience.model';
-import { IEducation } from '../../models/education.model';
-import { ILocalStorageExperiencesModel } from '../../models/local-storage-experiences.model';
+import { ILocalStorageExperiences } from '../../models/local-storage-experiences.model';
+import { ILocalStorageEducation } from '../../models/local-storage-education.model';
 
 @Injectable()
 export class CvDataEffects {
@@ -34,12 +33,13 @@ export class CvDataEffects {
 			ofType(CvDataActions.getExperiencesFromLocalStorage),
 			filter(
 				(action) =>
-					this._localStorageService.getItem<ILocalStorageExperiencesModel>(action.key) !== null,
+					this._localStorageService.getItem<ILocalStorageExperiences>(action.key) !== null,
 			),
 			map((action): Action => {
-				const localStoragePersonalData =
-					this._localStorageService.getItem<ILocalStorageExperiencesModel>(action.key);
-				return CvDataActions.getExperiencesSuccess({ payload: localStoragePersonalData });
+				const localStorageExperiences = this._localStorageService.getItem<ILocalStorageExperiences>(
+					action.key,
+				);
+				return CvDataActions.getExperiencesSuccess({ payload: localStorageExperiences });
 			}),
 		);
 	});
@@ -47,12 +47,14 @@ export class CvDataEffects {
 	public getEducationsFromLocalStorage$: Observable<Action> = createEffect(() => {
 		return this.actions.pipe(
 			ofType(CvDataActions.getEducationsFromLocalStorage),
-			filter((action) => this._localStorageService.getItem<IEducation[]>(action.key) !== null),
+			filter(
+				(action) => this._localStorageService.getItem<ILocalStorageEducation>(action.key) !== null,
+			),
 			map((action): Action => {
-				const localStoragePersonalData = this._localStorageService.getItem<IEducation[]>(
+				const localStorageEducation = this._localStorageService.getItem<ILocalStorageEducation>(
 					action.key,
 				);
-				return CvDataActions.getEducationsSuccess({ payload: localStoragePersonalData });
+				return CvDataActions.getEducationsSuccess({ payload: localStorageEducation });
 			}),
 		);
 	});

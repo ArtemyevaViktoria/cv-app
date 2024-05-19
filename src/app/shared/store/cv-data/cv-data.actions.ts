@@ -2,7 +2,8 @@ import { createAction, props } from '@ngrx/store';
 import { IPersonalData } from '../../models/personal-data.model';
 import { IExperience } from '../../models/experience.model';
 import { IEducation } from '../../models/education.model';
-import { ILocalStorageExperiencesModel } from '../../models/local-storage-experiences.model';
+import { ILocalStorageExperiences } from '../../models/local-storage-experiences.model';
+import { ILocalStorageEducation } from '../../models/local-storage-education.model';
 
 const GET_PERSONAL_DATA_FROM_LOCAL_STORAGE = '[CV data] Get personal data from Local Storage';
 const GET_PERSONAL_DATA_SUCCESS = '[CV data] Get personal data success';
@@ -34,7 +35,7 @@ export const getExperiencesFromLocalStorage = createAction(
 
 export const getExperiencesSuccess = createAction(
 	GET_EXPERIENCES_SUCCESS,
-	props<{ payload: ILocalStorageExperiencesModel }>(),
+	props<{ payload: ILocalStorageExperiences }>(),
 );
 
 export const getEducationsFromLocalStorage = createAction(
@@ -44,7 +45,7 @@ export const getEducationsFromLocalStorage = createAction(
 
 export const getEducationsSuccess = createAction(
 	GET_EDUCATIONS_SUCCESS,
-	props<{ payload: IEducation[] }>(),
+	props<{ payload: ILocalStorageEducation }>(),
 );
 
 export const addPersonalDataToLocalStorage = createAction(
