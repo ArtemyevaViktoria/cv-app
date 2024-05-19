@@ -7,6 +7,7 @@ import { CvDataActions } from './index';
 import { IPersonalData } from '../../models/personal-data.model';
 import { IExperience } from '../../models/experience.model';
 import { IEducation } from '../../models/education.model';
+import { ILocalStorageExperiencesModel } from '../../models/local-storage-experiences.model';
 
 @Injectable()
 export class CvDataEffects {
@@ -31,11 +32,13 @@ export class CvDataEffects {
 	public getExperiencesFromLocalStorage$: Observable<Action> = createEffect(() => {
 		return this.actions.pipe(
 			ofType(CvDataActions.getExperiencesFromLocalStorage),
-			filter((action) => this._localStorageService.getItem<IExperience[]>(action.key) !== null),
+			filter(
+				(action) =>
+					this._localStorageService.getItem<ILocalStorageExperiencesModel>(action.key) !== null,
+			),
 			map((action): Action => {
-				const localStoragePersonalData = this._localStorageService.getItem<IExperience[]>(
-					action.key,
-				);
+				const localStoragePersonalData =
+					this._localStorageService.getItem<ILocalStorageExperiencesModel>(action.key);
 				return CvDataActions.getExperiencesSuccess({ payload: localStoragePersonalData });
 			}),
 		);

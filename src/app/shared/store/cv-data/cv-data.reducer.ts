@@ -11,7 +11,7 @@ export const cvDataReducer = createReducer(
 	})),
 	on(CvDataActions.getExperiencesSuccess, (state: ICvDataState, { payload }) => ({
 		...state,
-		experiences: payload,
+		experiences: payload.experiencesArr,
 	})),
 	on(CvDataActions.getEducationsSuccess, (state: ICvDataState, { payload }) => ({
 		...state,
