@@ -94,4 +94,16 @@ export class CvDataEffects {
 		},
 		{ dispatch: false },
 	);
+
+	public deleteFromLocalStorage$: Observable<Action> = createEffect(
+		() => {
+			return this.actions.pipe(
+				ofType(CvDataActions.deleteFromLocalStorage),
+				tap((action) => {
+					return this._localStorageService.removeItem(action.key);
+				}),
+			);
+		},
+		{ dispatch: false },
+	);
 }
