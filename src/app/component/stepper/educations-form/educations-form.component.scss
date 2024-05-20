@@ -32,6 +32,10 @@
   }
 }
 
+.error {
+  color: var(--input-validator-message-color);
+}
+
 @media (min-width: 380px) {
   .date-select-flex {
     flex-direction: row;

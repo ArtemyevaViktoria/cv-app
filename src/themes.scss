@@ -5,5 +5,14 @@
 @use '@nebular/theme/styles/themes/dark';
 
 
+$nb-themes: nb-register-theme((
+ input-validator-message-color: color-danger-active
+), cosmic, cosmic);
 
+$nb-themes: nb-register-theme((
+  input-validator-message-color: color-danger-600
+), default, default);
 
+$nb-themes: nb-register-theme((
+  input-validator-message-color: color-danger-600
+), dark, dark);

@@ -6,3 +6,7 @@
     width: calc(50% - 0.5rem);
   }
 }
+
+.error {
+  color: var(--input-validator-message-color);
+}

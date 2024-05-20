@@ -102,10 +102,10 @@ export class ExperiencesFormComponent extends UnSubscriber implements OnInit {
 			position: ['', Validators.required],
 			company: ['', Validators.required],
 			city: ['', Validators.required],
-			startDateMonth: [this.months[0], Validators.required],
-			startDateYear: [2023, Validators.required],
-			endDateMonth: [this.months[3], Validators.required],
-			endDateYear: [2024, Validators.required],
+			startDateMonth: [this.months[0]],
+			startDateYear: [2023],
+			endDateMonth: [this.months[3]],
+			endDateYear: [2024],
 			description: [''],
 		});
 

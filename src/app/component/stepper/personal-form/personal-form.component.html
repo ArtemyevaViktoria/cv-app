@@ -2,27 +2,43 @@
   <div>
     <label for="firstName" class="mb-1 ms-1">First name</label>
     <input id="firstName" class="form-control" nbInput fullWidth type="text" placeholder="Ivan"
-           formControlName="firstName"
-           [ngClass]="{'form-control-danger': personalForm.invalid && (personalForm.dirty
-                   || personalForm.touched)}">
+           formControlName="firstName">
+
+    <div class="error mt-1" *ngIf="personalForm.controls['firstName'].invalid &&
+        (personalForm.controls['firstName'].dirty || personalForm.controls['firstName'].touched)">
+      <div *ngIf="personalForm.controls['firstName']?.errors?.['required']">* required</div>
+    </div>
+
 
     <label for="lastName" class="mb-1 ms-1 mt-3">Last name</label>
     <input id="lastName" class="form-control" nbInput fullWidth type="text" placeholder="Ivanov"
-           formControlName="lastName"
-           [ngClass]="{'form-control-danger': personalForm.invalid && (personalForm.dirty
-                   || personalForm.touched)}">
+           formControlName="lastName">
+
+    <div class="error mt-1" *ngIf="personalForm.controls['lastName'].invalid &&
+        (personalForm.controls['lastName'].dirty || personalForm.controls['lastName'].touched)">
+      <div *ngIf="personalForm.controls['lastName']?.errors?.['required']">* required</div>
+    </div>
+
 
     <label for="title" class="mb-1 ms-1 mt-3">Title</label>
     <input id="title" class="form-control" nbInput fullWidth type="text" placeholder="Frontend Developer"
-           formControlName="title"
-           [ngClass]="{'form-control-danger': personalForm.invalid && (personalForm.dirty
-                   || personalForm.touched)}">
+           formControlName="title">
+
+    <div class="error mt-1" *ngIf="personalForm.controls['title'].invalid &&
+        (personalForm.controls['title'].dirty || personalForm.controls['title'].touched)">
+      <div *ngIf="personalForm.controls['title']?.errors?.['required']">* required</div>
+    </div>
+
 
     <label for="address" class="mb-1 ms-1 mt-3">Address</label>
     <input id="address" class="form-control" nbInput fullWidth type="text" placeholder="125009, Red Square, Moscow, RU"
-           formControlName="address"
-           [ngClass]="{'form-control-danger': personalForm.invalid && (personalForm.dirty
-                   || personalForm.touched)}">
+           formControlName="address">
+
+    <div class="error mt-1" *ngIf="personalForm.controls['address'].invalid &&
+        (personalForm.controls['address'].dirty || personalForm.controls['address'].touched)">
+      <div *ngIf="personalForm.controls['address']?.errors?.['required']">* required</div>
+    </div>
+
 
 
     <label for="email" class="mb-1 ms-1 mt-3">Email address</label>
@@ -30,15 +46,23 @@
       <nb-icon nbPrefix icon="at-outline" pack="eva"></nb-icon>
 
       <input id="email" class="form-control" nbInput fullWidth type="email" placeholder="ivan.front.dev@gmail.com"
-             formControlName="email"
-             [ngClass]="{'form-control-danger': personalForm.invalid && (personalForm.dirty || personalForm.touched)}">
+             formControlName="email">
     </nb-form-field>
+
+    <div class="error mt-1" *ngIf="personalForm.controls['email'].invalid &&
+        (personalForm.controls['email'].dirty || personalForm.controls['email'].touched)">
+      <div *ngIf="personalForm.controls['email']?.errors?.['required']">* required</div>
+    </div>
+
 
     <label for="phone" class="mb-1 ms-1 mt-3">Phone number</label>
     <input id="phone" class="form-control" nbInput fullWidth type="tel" placeholder="+7 (495) 830-29-50"
-           formControlName="phone"
-           [ngClass]="{'form-control-danger': personalForm.invalid && (personalForm.dirty
-                   || personalForm.touched)}">
+           formControlName="phone">
+
+    <div class="error mt-1" *ngIf="personalForm.controls['phone'].invalid &&
+        (personalForm.controls['phone'].dirty || personalForm.controls['phone'].touched)">
+      <div *ngIf="personalForm.controls['phone']?.errors?.['required']">* required</div>
+    </div>
   </div>
 
   <div class="step-btn-container">

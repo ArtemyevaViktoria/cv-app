@@ -107,11 +107,11 @@ export class EducationsFormComponent extends UnSubscriber implements OnInit {
 			city: ['', Validators.required],
 			degree: ['', Validators.required],
 			subject: ['', Validators.required],
-			startDateMonth: [this.months[8], Validators.required],
-			startDateYear: [2016, Validators.required],
-			endDateMonth: [this.months[5], Validators.required],
-			endDateYear: [2020, Validators.required],
-			description: [],
+			startDateMonth: [this.months[8]],
+			startDateYear: [2016],
+			endDateMonth: [this.months[5]],
+			endDateYear: [2020],
+			description: [''],
 		});
 
 		this.education.push(newEducationForm);
