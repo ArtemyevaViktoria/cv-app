@@ -19,6 +19,8 @@ export class EducationsFormComponent extends UnSubscriber implements OnInit {
 
 	public educationsForm!: FormGroup;
 
+	public educationLocalStorage!: IEducation[];
+
 	public months: string[] = CMonths;
 
 	public years!: number[];
@@ -43,9 +45,9 @@ export class EducationsFormComponent extends UnSubscriber implements OnInit {
 		this._storeSelect
 			.educations()
 			.pipe(takeUntil(this.unsubscribe$$))
-			.subscribe((vl) => {
-				this.createEducations(vl);
-			});
+			.subscribe((vl) => (this.educationLocalStorage = vl));
+
+		this.createEducations(this.educationLocalStorage);
 	}
 
 	public getYears() {

@@ -16,7 +16,7 @@ export class PersonalFormComponent extends UnSubscriber implements OnInit {
 
 	public personalForm!: FormGroup;
 
-	public personalData!: IPersonalData;
+	public personalDataLocalStorage!: IPersonalData;
 
 	public constructor(
 		private _fb: FormBuilder,
@@ -32,7 +32,9 @@ export class PersonalFormComponent extends UnSubscriber implements OnInit {
 		this._storeSelect
 			.personalData()
 			.pipe(takeUntil(this.unsubscribe$$))
-			.subscribe((vl) => this.setPersonalData(vl));
+			.subscribe((vl) => (this.personalDataLocalStorage = vl));
+
+		this.setPersonalData(this.personalDataLocalStorage);
 	}
 
 	public initPersonalForm() {

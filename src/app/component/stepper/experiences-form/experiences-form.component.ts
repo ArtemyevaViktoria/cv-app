@@ -17,6 +17,8 @@ export class ExperiencesFormComponent extends UnSubscriber implements OnInit {
 
 	public experiencesForm!: FormGroup;
 
+	public experiencesLocalStorage!: IExperience[];
+
 	public months: string[] = CMonths;
 
 	public years!: number[];
@@ -41,9 +43,9 @@ export class ExperiencesFormComponent extends UnSubscriber implements OnInit {
 		this._storeSelect
 			.experiences()
 			.pipe(takeUntil(this.unsubscribe$$))
-			.subscribe((vl) => {
-				this.createExperiences(vl);
-			});
+			.subscribe((vl) => (this.experiencesLocalStorage = vl));
+
+		this.createExperiences(this.experiencesLocalStorage);
 	}
 
 	public getYears() {
