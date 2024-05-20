@@ -122,7 +122,9 @@ export class ExperiencesFormComponent extends UnSubscriber implements OnInit {
 		this.form.emit(this.experiencesForm);
 
 		if (this.experiencesForm.controls['experiencesArr'].value.length > 0) {
-			this._storeDispatch.addExperiencesToLocalStorage(this.experiencesForm.value);
+			this._storeDispatch.addExperiencesToLocalStorage(
+				this.experiencesForm.controls['experiencesArr'].value,
+			);
 		} else {
 			this._storeDispatch.deleteExperiencesFromLocalStorage();
 		}

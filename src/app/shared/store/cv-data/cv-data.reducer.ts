@@ -12,12 +12,12 @@ export const cvDataReducer = createReducer(
 	})),
 	on(CvDataActions.getExperiencesSuccess, (state: ICvDataState, { payload }) => ({
 		...state,
-		experiences: payload.experiencesArr,
+		experiences: payload ?? [],
 		resetForms: false,
 	})),
 	on(CvDataActions.getEducationsSuccess, (state: ICvDataState, { payload }) => ({
 		...state,
-		educations: payload.educationArr,
+		educations: payload ?? [],
 		resetForms: false,
 	})),
 

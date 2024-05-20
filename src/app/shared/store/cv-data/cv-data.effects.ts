@@ -5,8 +5,8 @@ import { filter, map, Observable, tap } from 'rxjs';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { CvDataActions } from './index';
 import { IPersonalData } from '../../models/personal-data.model';
-import { ILocalStorageExperiences } from '../../models/local-storage-experiences.model';
-import { ILocalStorageEducation } from '../../models/local-storage-education.model';
+import { IExperience } from '../../models/experience.model';
+import { IEducation } from '../../models/education.model';
 
 @Injectable()
 export class CvDataEffects {
@@ -31,12 +31,9 @@ export class CvDataEffects {
 	public getExperiencesFromLocalStorage$: Observable<Action> = createEffect(() => {
 		return this.actions.pipe(
 			ofType(CvDataActions.getExperiencesFromLocalStorage),
-			filter(
-				(action) =>
-					this._localStorageService.getItem<ILocalStorageExperiences>(action.key) !== null,
-			),
+			filter((action) => this._localStorageService.getItem<IExperience[]>(action.key) !== null),
 			map((action): Action => {
-				const localStorageExperiences = this._localStorageService.getItem<ILocalStorageExperiences>(
+				const localStorageExperiences = this._localStorageService.getItem<IExperience[]>(
 					action.key,
 				);
 				return CvDataActions.getExperiencesSuccess({ payload: localStorageExperiences });
@@ -47,13 +44,9 @@ export class CvDataEffects {
 	public getEducationsFromLocalStorage$: Observable<Action> = createEffect(() => {
 		return this.actions.pipe(
 			ofType(CvDataActions.getEducationsFromLocalStorage),
-			filter(
-				(action) => this._localStorageService.getItem<ILocalStorageEducation>(action.key) !== null,
-			),
+			filter((action) => this._localStorageService.getItem<IEducation[]>(action.key) !== null),
 			map((action): Action => {
-				const localStorageEducation = this._localStorageService.getItem<ILocalStorageEducation>(
-					action.key,
-				);
+				const localStorageEducation = this._localStorageService.getItem<IEducation[]>(action.key);
 				return CvDataActions.getEducationsSuccess({ payload: localStorageEducation });
 			}),
 		);
