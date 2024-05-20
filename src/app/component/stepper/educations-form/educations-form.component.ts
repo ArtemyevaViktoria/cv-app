@@ -129,7 +129,7 @@ export class EducationsFormComponent extends UnSubscriber implements OnInit {
 		if (this.educationsForm.controls['educationArr'].value.length > 0) {
 			this._storeDispatch.addEducationsToLocalStorage(this.educationsForm.value);
 		} else {
-			this._storeDispatch.deleteFromLocalStorage('educations');
+			this._storeDispatch.deleteEducationsFromLocalStorage();
 		}
 	}
 

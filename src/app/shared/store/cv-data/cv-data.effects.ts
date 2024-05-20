@@ -98,7 +98,10 @@ export class CvDataEffects {
 	public deleteFromLocalStorage$: Observable<Action> = createEffect(
 		() => {
 			return this.actions.pipe(
-				ofType(CvDataActions.deleteFromLocalStorage),
+				ofType(
+					CvDataActions.deleteExperiencesFromLocalStorage,
+					CvDataActions.deleteEducationsFromLocalStorage,
+				),
 				tap((action) => {
 					return this._localStorageService.removeItem(action.key);
 				}),

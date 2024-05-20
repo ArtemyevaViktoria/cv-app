@@ -18,7 +18,8 @@ const ADD_PERSONAL_DATA_TO_LOCAL_STORAGE = '[CV data] Add personal data to Local
 const ADD_EXPERIENCES_TO_LOCAL_STORAGE = '[CV data] Add experiences to Local Storage';
 const ADD_EDUCATIONS_TO_LOCAL_STORAGE = '[CV data] Add educations to Local Storage';
 
-const DELETE_FROM_LOCAL_STORAGE = '[CV data] Delete from Local Storage';
+const DELETE_EXPERIENCES_FROM_LOCAL_STORAGE = '[CV data] Delete experiences from Local Storage';
+const DELETE_EDUCATIONS_FROM_LOCAL_STORAGE = '[CV data] Delete educations from Local Storage';
 
 const RESET_FORMS = '[CV data] Reset forms';
 
@@ -67,8 +68,13 @@ export const addEducationsToLocalStorage = createAction(
 	props<{ payload: IEducation[] }>(),
 );
 
-export const deleteFromLocalStorage = createAction(
-	DELETE_FROM_LOCAL_STORAGE,
+export const deleteExperiencesFromLocalStorage = createAction(
+	DELETE_EXPERIENCES_FROM_LOCAL_STORAGE,
+	props<{ key: string }>(),
+);
+
+export const deleteEducationsFromLocalStorage = createAction(
+	DELETE_EDUCATIONS_FROM_LOCAL_STORAGE,
 	props<{ key: string }>(),
 );
 

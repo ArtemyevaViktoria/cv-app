@@ -44,8 +44,16 @@ export class StoreDispatchFacade {
 		return this.store.dispatch(CvDataActions.addEducationsToLocalStorage({ payload: educations }));
 	}
 
-	public deleteFromLocalStorage(key: string): void {
-		return this.store.dispatch(CvDataActions.deleteFromLocalStorage({ key: key }));
+	public deleteExperiencesFromLocalStorage(): void {
+		return this.store.dispatch(
+			CvDataActions.deleteExperiencesFromLocalStorage({ key: 'experiences' }),
+		);
+	}
+
+	public deleteEducationsFromLocalStorage(): void {
+		return this.store.dispatch(
+			CvDataActions.deleteEducationsFromLocalStorage({ key: 'educations' }),
+		);
 	}
 
 	public resetForms(): void {

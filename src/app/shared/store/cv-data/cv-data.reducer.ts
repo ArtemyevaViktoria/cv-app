@@ -37,6 +37,18 @@ export const cvDataReducer = createReducer(
 		resetForms: false,
 	})),
 
+	on(CvDataActions.deleteExperiencesFromLocalStorage, (state: ICvDataState) => ({
+		...state,
+		resetForms: false,
+		experiences: [],
+	})),
+
+	on(CvDataActions.deleteEducationsFromLocalStorage, (state: ICvDataState) => ({
+		...state,
+		resetForms: false,
+		educations: [],
+	})),
+
 	on(CvDataActions.resetForms, (state: ICvDataState) => ({
 		...state,
 		resetForms: true,
