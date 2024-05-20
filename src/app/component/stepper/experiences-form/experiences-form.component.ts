@@ -13,7 +13,8 @@ import { IExperience } from '../../../shared/models/experience.model';
 	styleUrl: './experiences-form.component.scss',
 })
 export class ExperiencesFormComponent extends UnSubscriber implements OnInit {
-	@Output() public form = new EventEmitter();
+	@Output()
+	public form = new EventEmitter();
 
 	public experiencesForm!: FormGroup;
 
@@ -34,9 +35,7 @@ export class ExperiencesFormComponent extends UnSubscriber implements OnInit {
 	}
 
 	public ngOnInit() {
-		this.experiencesForm = this._fb.group({
-			experiencesArr: this._fb.array([]),
-		});
+		this.initExperiencesForm();
 
 		this.getYears();
 
@@ -46,6 +45,17 @@ export class ExperiencesFormComponent extends UnSubscriber implements OnInit {
 			.subscribe((vl) => (this.experiencesLocalStorage = vl));
 
 		this.createExperiences(this.experiencesLocalStorage);
+
+		this._storeSelect
+			.resetForms()
+			.pipe(takeUntil(this.unsubscribe$$))
+			.subscribe((vl) => this.reset(vl));
+	}
+
+	public initExperiencesForm() {
+		this.experiencesForm = this._fb.group({
+			experiencesArr: this._fb.array([]),
+		});
 	}
 
 	public getYears() {
@@ -113,6 +123,13 @@ export class ExperiencesFormComponent extends UnSubscriber implements OnInit {
 
 		if (this.experiencesForm.controls['experiencesArr'].value.length > 0) {
 			this._storeDispatch.addExperiencesToLocalStorage(this.experiencesForm.value);
+		}
+	}
+
+	public reset(reset: boolean) {
+		if (reset) {
+			this.initExperiencesForm();
+			this.form.emit(this.experiencesForm);
 		}
 	}
 }

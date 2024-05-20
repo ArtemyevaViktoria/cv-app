@@ -6,10 +6,12 @@ export interface ICvDataState {
 	personalData: IPersonalData;
 	experiences: IExperience[];
 	educations: IEducation[];
+	resetForms: boolean;
 }
 
 export const initialCvDataState: ICvDataState = {
 	personalData: {} as IPersonalData,
 	experiences: [],
 	educations: [],
+	resetForms: false,
 };

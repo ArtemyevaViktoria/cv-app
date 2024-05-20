@@ -17,3 +17,8 @@ export const selectEducations = createSelector(
 	cvDataState,
 	(state: ICvDataState) => state.educations,
 );
+
+export const selectResetForms = createSelector(
+	cvDataState,
+	(state: ICvDataState) => state.resetForms,
+);

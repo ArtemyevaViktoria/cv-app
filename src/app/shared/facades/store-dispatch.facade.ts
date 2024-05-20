@@ -43,4 +43,8 @@ export class StoreDispatchFacade {
 	public addEducationsToLocalStorage(educations: IEducation[]): void {
 		return this.store.dispatch(CvDataActions.addEducationsToLocalStorage({ payload: educations }));
 	}
+
+	public resetForms(): void {
+		return this.store.dispatch(CvDataActions.resetForms());
+	}
 }

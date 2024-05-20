@@ -18,6 +18,8 @@ const ADD_PERSONAL_DATA_TO_LOCAL_STORAGE = '[CV data] Add personal data to Local
 const ADD_EXPERIENCES_TO_LOCAL_STORAGE = '[CV data] Add experiences to Local Storage';
 const ADD_EDUCATIONS_TO_LOCAL_STORAGE = '[CV data] Add educations to Local Storage';
 
+const RESET_FORMS = '[CV data] Reset forms';
+
 export const getPersonalDataFromLocalStorage = createAction(
 	GET_PERSONAL_DATA_FROM_LOCAL_STORAGE,
 	props<{ key: string }>(),
@@ -62,3 +64,5 @@ export const addEducationsToLocalStorage = createAction(
 	ADD_EDUCATIONS_TO_LOCAL_STORAGE,
 	props<{ payload: IEducation[] }>(),
 );
+
+export const resetForms = createAction(RESET_FORMS);

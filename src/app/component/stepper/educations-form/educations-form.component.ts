@@ -13,9 +13,11 @@ import { IEducation } from '../../../shared/models/education.model';
 	styleUrl: './educations-form.component.scss',
 })
 export class EducationsFormComponent extends UnSubscriber implements OnInit {
-	@Output() public form = new EventEmitter();
+	@Output()
+	public form = new EventEmitter();
 
-	@Output() public confirm = new EventEmitter();
+	@Output()
+	public confirm = new EventEmitter();
 
 	public educationsForm!: FormGroup;
 
@@ -36,9 +38,7 @@ export class EducationsFormComponent extends UnSubscriber implements OnInit {
 	}
 
 	public ngOnInit() {
-		this.educationsForm = this._fb.group({
-			educationArr: this._fb.array([]),
-		});
+		this.initEducationsForm();
 
 		this.getYears();
 
@@ -48,6 +48,17 @@ export class EducationsFormComponent extends UnSubscriber implements OnInit {
 			.subscribe((vl) => (this.educationLocalStorage = vl));
 
 		this.createEducations(this.educationLocalStorage);
+
+		this._storeSelect
+			.resetForms()
+			.pipe(takeUntil(this.unsubscribe$$))
+			.subscribe((vl) => this.reset(vl));
+	}
+
+	public initEducationsForm() {
+		this.educationsForm = this._fb.group({
+			educationArr: this._fb.array([]),
+		});
 	}
 
 	public getYears() {
@@ -117,6 +128,13 @@ export class EducationsFormComponent extends UnSubscriber implements OnInit {
 
 		if (this.educationsForm.controls['educationArr'].value.length > 0) {
 			this._storeDispatch.addEducationsToLocalStorage(this.educationsForm.value);
+		}
+	}
+
+	public reset(reset: boolean) {
+		if (reset) {
+			this.initEducationsForm();
+			this.form.emit(this.educationsForm);
 		}
 	}
 }

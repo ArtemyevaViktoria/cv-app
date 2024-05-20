@@ -34,7 +34,9 @@ export class PersonalFormComponent extends UnSubscriber implements OnInit {
 			.pipe(takeUntil(this.unsubscribe$$))
 			.subscribe((vl) => (this.personalDataLocalStorage = vl));
 
-		this.setPersonalData(this.personalDataLocalStorage);
+		if (Object.keys(this.personalDataLocalStorage).length > 0) {
+			this.setPersonalData(this.personalDataLocalStorage);
+		}
 	}
 
 	public initPersonalForm() {

@@ -24,4 +24,8 @@ export class StoreSelectFacade {
 	public educations(): Observable<IEducation[]> {
 		return this.store.select(CvDataSelectors.selectEducations);
 	}
+
+	public resetForms(): Observable<boolean> {
+		return this.store.select(CvDataSelectors.selectResetForms);
+	}
 }
