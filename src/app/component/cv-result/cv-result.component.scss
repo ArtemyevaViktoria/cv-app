@@ -1,0 +1,73 @@
+.cv-result-container {
+  display: flex;
+  justify-content: center;
+
+  #contentToConvert {
+    width: 220px;
+    height: 297px;
+    background-color: white;
+    overflow: hidden;
+  }
+
+  p {
+    color: black;
+    font-size: 6px;
+    line-height: 0.6rem;
+  }
+
+  .header {
+    padding: 0.3rem;
+    margin: 0;
+    background-color: #002885;
+
+    p {
+      color: white;
+    }
+  }
+
+  .name {
+    font-size: 8px;
+    font-weight: bold;
+  }
+
+  th, td, caption {
+    margin: 0;
+    line-height: 1;
+  }
+
+  table {
+    font-size: 5px;
+    width: 100%;
+    color: black;
+    caption-side: top;
+  }
+  caption {
+    padding: 0.3rem;
+    background-color: rgba(143, 155, 179, 0.4);
+    font-weight: bold;
+  }
+  th {
+    width: 30%;
+    padding: 0.1rem 0.3rem 0.1rem 0.1rem;
+    background-color: rgba(143, 155, 179, 0.16);
+    font-weight: normal;
+    text-align: end;
+    font-style: italic;
+  }
+  td {
+    width: 70%;
+    padding: 0.1rem;
+    background-color: rgba(143, 155, 179, 0.08);
+  }
+
+  .separator {
+    height: 0.5rem;
+  }
+
+  table tbody:last-child {
+    .separator {
+      height: 0;
+    }
+  }
+}
+
