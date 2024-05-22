@@ -11,7 +11,7 @@ import { StoreDispatchFacade } from '../../facades/store-dispatch.facade';
 	styleUrl: './header.component.scss',
 })
 export class HeaderComponent extends UnSubscriber implements OnInit {
-	public selected!: string;
+	public selected = 'cosmic';
 
 	public constructor(
 		private _themeService: NbThemeService,
@@ -26,8 +26,10 @@ export class HeaderComponent extends UnSubscriber implements OnInit {
 			.theme()
 			.pipe(takeUntil(this.unsubscribe$$))
 			.subscribe((vl) => {
-				this.selected = vl;
-				this._themeService.changeTheme(vl);
+				if (vl) {
+					this.selected = vl;
+					this._themeService.changeTheme(vl);
+				}
 			});
 	}
 
