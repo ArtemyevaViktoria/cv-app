@@ -3,6 +3,7 @@ import { IExperience } from '../../models/experience.model';
 import { IEducation } from '../../models/education.model';
 
 export interface ICvDataState {
+	theme: string;
 	personalData: IPersonalData;
 	experiences: IExperience[];
 	educations: IEducation[];
@@ -10,6 +11,7 @@ export interface ICvDataState {
 }
 
 export const initialCvDataState: ICvDataState = {
+	theme: '',
 	personalData: {} as IPersonalData,
 	experiences: [],
 	educations: [],

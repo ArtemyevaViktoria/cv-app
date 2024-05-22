@@ -28,6 +28,10 @@ export class StoreDispatchFacade {
 		return this.store.dispatch(CvDataActions.getEducationsFromLocalStorage({ key: 'educations' }));
 	}
 
+	public getThemeFromLocalStorage(): void {
+		return this.store.dispatch(CvDataActions.getThemeFromLocalStorage({ key: 'theme' }));
+	}
+
 	public addPersonalDataToLocalStorage(personalData: IPersonalData): void {
 		return this.store.dispatch(
 			CvDataActions.addPersonalDataToLocalStorage({ payload: personalData }),
@@ -42,6 +46,10 @@ export class StoreDispatchFacade {
 
 	public addEducationsToLocalStorage(educations: IEducation[]): void {
 		return this.store.dispatch(CvDataActions.addEducationsToLocalStorage({ payload: educations }));
+	}
+
+	public addThemeToLocalStorage(theme: string): void {
+		return this.store.dispatch(CvDataActions.addThemeToLocalStorage({ payload: theme }));
 	}
 
 	public deleteExperiencesFromLocalStorage(): void {

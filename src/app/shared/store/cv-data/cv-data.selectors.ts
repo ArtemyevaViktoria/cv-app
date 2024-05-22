@@ -3,6 +3,9 @@ import { IRootState } from '../root.state';
 import { ICvDataState } from './cv-data.state';
 
 const cvDataState = (state: IRootState) => state.cvDataState;
+
+export const selectTheme = createSelector(cvDataState, (state: ICvDataState) => state.theme);
+
 export const selectPersonalData = createSelector(
 	cvDataState,
 	(state: ICvDataState) => state.personalData,

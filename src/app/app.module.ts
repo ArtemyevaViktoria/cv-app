@@ -21,7 +21,7 @@ import { ExperiencesFormComponent } from './component/stepper/experiences-form/e
 import { EducationsFormComponent } from './component/stepper/educations-form/educations-form.component';
 import { PersonalFormComponent } from './component/stepper/personal-form/personal-form.component';
 import { SharedModule } from './shared/shared.module';
-import { CvResultComponent } from './component/cv-result/cv-result.component';
+import { CvResultComponent } from './component/stepper/cv-result/cv-result.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';

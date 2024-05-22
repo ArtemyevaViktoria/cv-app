@@ -13,6 +13,10 @@ import { IEducation } from '../models/education.model';
 export class StoreSelectFacade {
 	public constructor(private store: Store<IRootState>) {}
 
+	public theme(): Observable<string> {
+		return this.store.select(CvDataSelectors.selectTheme);
+	}
+
 	public personalData(): Observable<IPersonalData> {
 		return this.store.select(CvDataSelectors.selectPersonalData);
 	}

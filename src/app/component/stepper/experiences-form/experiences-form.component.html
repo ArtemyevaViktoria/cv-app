@@ -86,9 +86,9 @@
     <nb-icon icon="plus-circle-outline"></nb-icon> Add experience
   </button>
 
-  <div class="step-btn-container">
-    <button class="mt-3" nbButton nbStepperPrevious type="button">prev</button>
-    <button class="mt-3" nbButton nbStepperNext type="button" (click)="submitForm()"
+  <div class="step-btn-container mt-3">
+    <button nbButton nbStepperPrevious type="button">prev</button>
+    <button nbButton nbStepperNext type="button" (click)="submitForm()"
             [disabled]="!experiencesForm.valid" >next</button>
   </div>
 </form>

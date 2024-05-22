@@ -1,11 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { StoreSelectFacade } from '../../shared/facades/store-select.facade';
-import { UnSubscriber } from '../../shared/utils/unsubscriber';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { StoreSelectFacade } from '../../../shared/facades/store-select.facade';
+import { UnSubscriber } from '../../../shared/utils/unsubscriber';
 import { takeUntil } from 'rxjs';
-import { IPersonalData } from '../../shared/models/personal-data.model';
-import { IExperience } from '../../shared/models/experience.model';
-import { IEducation } from '../../shared/models/education.model';
-import { PdfService } from '../../shared/services/pdf.service';
+import { IPersonalData } from '../../../shared/models/personal-data.model';
+import { IExperience } from '../../../shared/models/experience.model';
+import { IEducation } from '../../../shared/models/education.model';
+import { PdfService } from '../../../shared/services/pdf.service';
 
 @Component({
 	selector: 'cv-result',
@@ -13,7 +13,10 @@ import { PdfService } from '../../shared/services/pdf.service';
 	styleUrl: './cv-result.component.scss',
 })
 export class CvResultComponent extends UnSubscriber implements OnInit {
-	@ViewChild('contentToConvert', { static: false })
+	@Output()
+	public resetData = new EventEmitter();
+
+	@ViewChild('contentToConvert')
 	public contentToConvert!: ElementRef;
 
 	public personalData!: IPersonalData;

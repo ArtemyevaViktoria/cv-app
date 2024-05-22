@@ -1,7 +1,7 @@
 <div class="header-container">
   <p class="fs-4 text-uppercase fw-bold">Cv maker</p>
 
-  <nb-select [selected]="selected" (selectedChange)="changeTheme($event)">
+  <nb-select [selected]="selected" (selectedChange)="addThemeToLocalStorage($event)">
     <nb-option value="cosmic">
       <div class="header-grid-container">
         <p>⭐ </p>

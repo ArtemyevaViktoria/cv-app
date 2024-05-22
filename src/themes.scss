@@ -6,13 +6,20 @@
 
 
 $nb-themes: nb-register-theme((
- input-validator-message-color: color-danger-active
+ input-validator-message-color: color-danger-active,
+ cv-result-header-background-color: #a16eff,
+ textarea-scrollbar-thumb-background-color: #a16eff
+
 ), cosmic, cosmic);
 
 $nb-themes: nb-register-theme((
-  input-validator-message-color: color-danger-600
+  input-validator-message-color: color-danger-600,
+  cv-result-header-background-color: #36f,
+  textarea-scrollbar-thumb-background-color: #36f
 ), default, default);
 
 $nb-themes: nb-register-theme((
-  input-validator-message-color: color-danger-600
+  input-validator-message-color: color-danger-600,
+  cv-result-header-background-color: #36f,
+  textarea-scrollbar-thumb-background-color: #36f
 ), dark, dark);

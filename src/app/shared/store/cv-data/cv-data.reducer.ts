@@ -20,6 +20,11 @@ export const cvDataReducer = createReducer(
 		educations: payload ?? [],
 		resetForms: false,
 	})),
+	on(CvDataActions.getThemeSuccess, (state: ICvDataState, { payload }) => ({
+		...state,
+		theme: payload,
+		resetForms: false,
+	})),
 
 	on(CvDataActions.addPersonalDataToLocalStorage, (state: ICvDataState, { payload }) => ({
 		...state,
@@ -34,6 +39,11 @@ export const cvDataReducer = createReducer(
 	on(CvDataActions.addEducationsToLocalStorage, (state: ICvDataState, { payload }) => ({
 		...state,
 		educations: payload,
+		resetForms: false,
+	})),
+	on(CvDataActions.addThemeToLocalStorage, (state: ICvDataState, { payload }) => ({
+		...state,
+		theme: payload,
 		resetForms: false,
 	})),
 

@@ -52,6 +52,17 @@ export class CvDataEffects {
 		);
 	});
 
+	public getThemeFromLocalStorage$: Observable<Action> = createEffect(() => {
+		return this.actions.pipe(
+			ofType(CvDataActions.getThemeFromLocalStorage),
+			filter((action) => this._localStorageService.getItem<string>(action.key) !== null),
+			map((action): Action => {
+				const localStorageTheme = this._localStorageService.getItem<string>(action.key);
+				return CvDataActions.getThemeSuccess({ payload: localStorageTheme });
+			}),
+		);
+	});
+
 	public addPersonalDataToLocalStorage$: Observable<Action> = createEffect(
 		() => {
 			return this.actions.pipe(
@@ -82,6 +93,18 @@ export class CvDataEffects {
 				ofType(CvDataActions.addEducationsToLocalStorage),
 				tap((action) => {
 					return this._localStorageService.setItem('educations', action.payload);
+				}),
+			);
+		},
+		{ dispatch: false },
+	);
+
+	public addThemeToLocalStorage$: Observable<Action> = createEffect(
+		() => {
+			return this.actions.pipe(
+				ofType(CvDataActions.addThemeToLocalStorage),
+				tap((action) => {
+					return this._localStorageService.setItem('theme', action.payload);
 				}),
 			);
 		},

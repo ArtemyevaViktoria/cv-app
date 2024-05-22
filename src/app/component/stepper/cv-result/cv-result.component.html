@@ -1,0 +1,61 @@
+<div class="cv-result-container">
+  <div class="cv-content-container">
+    <div #contentToConvert id="contentToConvert">
+      <div class="header">
+        <p class="name">{{ personalData.firstName }} {{ personalData.lastName }}</p>
+        <p>{{ personalData.title }}</p>
+      </div>
+
+      <table>
+        <caption>Personal Information</caption>
+        <tr><th>address</th><td>{{ personalData.address }}</td></tr>
+        <tr><th>phone</th><td>{{ personalData.phone }}</td></tr>
+        <tr><th>email</th><td>{{ personalData.email }}</td></tr>
+      </table>
+
+      <table *ngIf="experiencesData.length > 0">
+        <caption>Work experience</caption>
+        <tbody *ngFor="let exp of experiencesData">
+        <tr>
+          <th>dates (from - to)</th>
+          <td>{{ exp.startDateMonth }} {{ exp.startDateYear }} - {{ exp.endDateMonth }} {{ exp.endDateYear }}</td>
+        </tr>
+        <tr><th>position</th><td>{{ exp.position }}</td></tr>
+        <tr><th>company name</th><td>{{ exp.company }}</td></tr>
+        <tr><th>city</th><td>{{ exp.city }}</td></tr>
+        <tr *ngIf="exp.description"><th>description</th><td>{{ exp.description }}</td></tr>
+
+        <tr class="separator"><th></th><td></td></tr>
+        </tbody>
+      </table>
+
+      <table *ngIf="educationsData.length > 0">
+        <caption>Education</caption>
+        <tbody *ngFor="let edc of educationsData">
+        <tr>
+          <th>dates (from - to)</th>
+          <td>{{ edc.startDateMonth }} {{ edc.startDateYear }} - {{ edc.endDateMonth }} {{ edc.endDateYear }}</td>
+        </tr>
+        <tr><th>university name</th><td>{{ edc.universityName }}</td></tr>
+        <tr><th>city</th><td>{{ edc.city }}</td></tr>
+        <tr><th>degree</th><td>{{ edc.degree }}</td></tr>
+        <tr><th>subject</th><td>{{ edc.subject }}</td></tr>
+        <tr *ngIf="edc.description"><th>description</th><td>{{ edc.description }}</td></tr>
+
+        <tr class="separator"><th></th><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="step-btn-container mt-4">
+    <button class="me-3" nbButton (click)="resetData.emit()">Try again</button>
+    <button nbButton (click)="exportToPdf()">Create PDF</button>
+  </div>
+</div>
+
+
+
+
+
+

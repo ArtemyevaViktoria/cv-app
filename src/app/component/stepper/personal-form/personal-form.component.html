@@ -40,7 +40,6 @@
     </div>
 
 
-
     <label for="email" class="mb-1 ms-1 mt-3">Email address</label>
     <nb-form-field>
       <nb-icon nbPrefix icon="at-outline" pack="eva"></nb-icon>
@@ -65,8 +64,8 @@
     </div>
   </div>
 
-  <div class="step-btn-container">
-    <button class="mt-3 step-btn" nbButton nbStepperNext type="button" (click)="submitForm()"
+  <div class="step-btn-container mt-3">
+    <button class="step-btn" nbButton nbStepperNext type="button" (click)="submitForm()"
             [disabled]="!personalForm.valid">next</button>
   </div>
 </form>

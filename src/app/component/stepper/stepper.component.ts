@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { NbStepChangeEvent } from '@nebular/theme';
+import { NbStepChangeEvent, NbStepperComponent } from '@nebular/theme';
 import { StoreDispatchFacade } from '../../shared/facades/store-dispatch.facade';
 
 @Component({
@@ -9,8 +9,8 @@ import { StoreDispatchFacade } from '../../shared/facades/store-dispatch.facade'
 	styleUrl: './stepper.component.scss',
 })
 export class StepperComponent {
-	@Output()
-	public resetExperiences = new EventEmitter();
+	@ViewChild('stepper')
+	public stepper!: NbStepperComponent;
 
 	public personalForm!: FormGroup;
 
@@ -19,6 +19,8 @@ export class StepperComponent {
 	public educationsForm!: FormGroup;
 
 	public changeEvent!: NbStepChangeEvent;
+
+	public titles: string[] = ['Personal details', 'Experiences', 'Education'];
 
 	public constructor(private _storeDispatch: StoreDispatchFacade) {}
 
@@ -38,20 +40,8 @@ export class StepperComponent {
 		this.changeEvent = e;
 	}
 
-	public titles = ['Personal details', 'Experiences', 'Education'];
-
-	public confirmForms() {
-		console.log(this.personalForm.value);
-
-		if (this.experiencesForm?.value) {
-			console.log(this.experiencesForm.value);
-		}
-		if (this.educationsForm?.value) {
-			console.log(this.educationsForm.value);
-		}
-	}
-
 	public resetForms() {
+		this.stepper.reset();
 		this._storeDispatch.resetForms();
 	}
 }

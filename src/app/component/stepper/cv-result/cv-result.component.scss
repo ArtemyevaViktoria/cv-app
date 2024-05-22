@@ -1,9 +1,9 @@
-.cv-result-container {
+.cv-content-container {
   display: flex;
   justify-content: center;
 
   #contentToConvert {
-    width: 220px;
+    width: 210px;
     height: 297px;
     background-color: white;
     overflow: hidden;
@@ -18,7 +18,7 @@
   .header {
     padding: 0.3rem;
     margin: 0;
-    background-color: #002885;
+    background-color: var(--cv-result-header-background-color);
 
     p {
       color: white;
@@ -36,27 +36,33 @@
   }
 
   table {
-    font-size: 5px;
+    font-size: 4.5px;
     width: 100%;
     color: black;
     caption-side: top;
   }
   caption {
-    padding: 0.3rem;
-    background-color: rgba(143, 155, 179, 0.4);
+    margin: 0;
+    padding: 0;
+    font-size: 4px;
     font-weight: bold;
+    line-height: 2;
+    text-align: center;
+    background-color: rgba(143, 155, 179, 0.4);
   }
   th {
-    width: 30%;
+    width: 28%;
     padding: 0.1rem 0.3rem 0.1rem 0.1rem;
-    background-color: rgba(143, 155, 179, 0.16);
     font-weight: normal;
     text-align: end;
+    vertical-align: baseline;
+    background-color: rgba(143, 155, 179, 0.16);
     font-style: italic;
   }
   td {
-    width: 70%;
+    width: 72%;
     padding: 0.1rem;
+    vertical-align: baseline;
     background-color: rgba(143, 155, 179, 0.08);
   }
 
@@ -68,6 +74,15 @@
     .separator {
       height: 0;
     }
+  }
+}
+
+.step-btn-container {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    width: calc(50% - 0.5rem);
   }
 }
 
