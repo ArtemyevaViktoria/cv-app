@@ -4,6 +4,10 @@
 
 #### Приложение для создания личного резюме (CV)
 
+<div align="left">
+  <img height="360" width="400" src="src/assets/cv.gif"/>
+</div>
+
 ## Стек технологий
 - Angular
 - TypeScript
