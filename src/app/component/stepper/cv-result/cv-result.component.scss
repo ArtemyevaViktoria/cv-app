@@ -5,7 +5,6 @@
   #contentToConvert {
     width: 210px;
     height: 297px;
-    background-color: white;
     overflow: hidden;
   }
 
@@ -48,7 +47,7 @@
     font-weight: bold;
     line-height: 2;
     text-align: center;
-    background-color: rgba(143, 155, 179, 0.4);
+    background-color: rgb(210, 215, 225);
   }
   th {
     width: 28%;
@@ -56,14 +55,14 @@
     font-weight: normal;
     text-align: end;
     vertical-align: baseline;
-    background-color: rgba(143, 155, 179, 0.16);
+    background-color: rgb(237, 239, 243);
     font-style: italic;
   }
   td {
     width: 72%;
     padding: 0.1rem;
     vertical-align: baseline;
-    background-color: rgba(143, 155, 179, 0.08);
+    background-color: rgb(246, 247, 249);
   }
 
   .separator {
