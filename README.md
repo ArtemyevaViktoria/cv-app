@@ -38,7 +38,7 @@
 ## Сборка
 `ng build`
 
-## Деплой:
+## Деплой
 [Try now, not later](https://artemyevaviktoria.github.io/cv-app/)
 
 
